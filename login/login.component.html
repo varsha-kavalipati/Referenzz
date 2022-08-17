@@ -1,0 +1,73 @@
+<!-- <section class="vh-100">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 text-black">
+                <div class="d-flex align-iems-center h-custom-2 px-5 ms-xl -4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+                    <form [formGroup]="loginform" (ngSubmit)="loginUser()">
+                        <small class="text-danger">{{msg}}</small>
+                        <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log In</h3>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" name="email" placeholder="Enter email" formControlName="email"
+                            [(ngModel)]="user.emailId" required pattern="^\w+@[a-zA-Z_]+?\.[a-zA-z]{2,3}$" [class.is_invalid]="loginform.controls['email'].invalid && loginform.controls['email'].touched">
+                            <div *ngIf="loginform.controls['email'].errors && (loginform.controls['email'].invalid && loginform.controls['email'].touched)">
+                                <small class="text-danger" *ngIf="loginform.controls['email'].errors['required']">Email Id is a required field</small>
+                                <small class="text-danger" *ngIf="loginform.controls['email'].errors['pattern']">Enter valid emailId</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" name="password" placeholder="Enter password" formControlName="email"
+                            [(ngModel)]="user.password" >
+                            <div *ngIf="loginform.controls['password'].touched && loginform.controls['password'].invalid" class="alert alert-danger">
+                                <span>Password is required</span>
+                            </div>
+                        </div>
+                        <br/>
+                        <button type="submit" class="btn btn-info" >Login</button>
+                    </form>
+                </div>
+                <small class="float-right" (click)="gotoregistration()">New User? <strong style="color:blue">Register Here</strong></small>
+            </div>
+        </div>
+    </div>
+</section>-->
+<section class="vh-100">
+    <div class="container-fluid">
+<div class="row">
+    <div class="col-md-5 col-md-offset-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Login Form</div>
+        <div class="panel-body">
+          <form [formGroup]="loginform">
+            <div class="form-group">
+              <label for="email">Email Id</label>
+              <input type="text" class="form-control" formControlName="email" required>
+              <p *ngIf="loginform.controls['email'].dirty && loginform.controls['email'].invalid" class="alert alert-danger">Invalid email!</p>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" formControlName="password" required>
+              <p *ngIf="loginform.controls['password'].dirty && loginform.controls['password'].invalid" class="alert alert-danger">Invalid password format!</p>
+            </div>
+            <br/>
+            <button type="submit" (click)="loginUser()" [disabled]="!loginform.valid" class="btn btn-primary">Login</button>
+  
+          </form>
+          <div *ngIf="errorMessage">
+            <!-- Display error message -->
+            <span class="text text-danger"> {{ errorMessage }} </span>
+          </div>
+          <div *ngIf="successMessage">
+            <!-- Display error message -->
+            <span class="text text-success"> {{ successMessage }} </span>
+          </div>
+  
+        </div>
+        <small class="float-right" (click)="gotoregistration()">New User? <strong style="color:blue">Register Here</strong></small>
+      </div>
+    </div>
+  </div>
+  </div>
+  </section>

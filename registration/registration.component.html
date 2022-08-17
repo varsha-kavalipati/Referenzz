@@ -1,0 +1,83 @@
+<!--<div class="container">
+    <h2>User Registration</h2>
+                    <form [formGroup]="registerform" (ngSubmit)="registerUser()">
+                        <small class="text-danger">{{msg}}</small>
+
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" name="email" placeholder="Enter email" formControlName="email"
+                            [(ngModel)]="user.emailId" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [class.is_invalid]="registerform.controls['email'].invalid && registerform.controls['email'].touched">
+                            <div *ngIf="registerform.controls['email'].errors && (registerform.controls['email'].invalid && registerform.controls['email'].touched)">
+                                <small class="text-danger" *ngIf="registerform.controls['email'].errors['required']">Email Id is a required field</small>
+                                <small class="text-danger" *ngIf="registerform.controls['email'].errors['pattern']">Enter valid emailId</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="type_of_account">Type of Account</label>
+                            <br/>
+                            <select name="type_of_account" id="type_of_account">
+                                <option selected="selected" value="Buyer">Buyer</option>
+                                <option value="seller">Seller</option>
+                            </select> 
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" name="password" placeholder="Enter password" formControlName="email"
+                            [(ngModel)]="user.password">
+                            <div *ngIf="registerform.controls['password'].touched && registerform.controls['password'].invalid" class="alert alert-danger">
+                                <span>Password is required</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pwd">Confirm Password:</label>
+                            <input type="password" id="confirm_password" class="form-control" name="confirm_password" placeholder="Confirm password" formControlName="confirm_password"
+                            (ngModel)="user.password">
+                            <div *ngIf="registerform.controls['confirm_password'].touched && registerform.controls['confirm_password'].invalid" class="alert alert-danger">
+                                <div *ngIf="registerform.controls['confirm_password'].errors?.['required']">It is a required field</div>
+                                <div *ngIf="registerform.controls['confirm_password'].errors?.['confirmedValidator']">Mismatched</div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-info" >submit</button>
+                    </form>
+                <small class="float-right" (click)="gotologin()">Existing User? <strong style="color:blue">Login Here</strong></small>
+    </div>-->
+
+    <div class="row">
+        <div class="col-md-5 col-md-offset-4">
+          <div class="panel panel-primary">
+            <div class="panel-heading">Register</div>
+            <div class="panel-body">
+              <form [formGroup]="registerform">
+                <div class="form-group">
+                  <label for="email">Email Id</label>
+                  <input type="text" class="form-control" formControlName="email">
+                  <p *ngIf="registerform.controls['email'].dirty && registerform.controls['email'].invalid" class="alert alert-danger">Invalid email!</p>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" formControlName="password">
+                  <p *ngIf="registerform.controls['password'].dirty && registerform.controls['password'].invalid" class="alert alert-danger">Invalid password format! <br><small>Must be between 6-20 chars and contains uppercase, lowercase, numbers and special characters!</small></p>
+                </div>
+                <div class="form-group">
+                  <label for="username">Name</label>
+                  <input type="text" class="form-control" formControlName="username">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Confirm Password:</label>
+                    <input type="password" id="confirm_password" class="form-control" name="confirm_password" placeholder="Confirm password" formControlName="confirm_password">
+                    <div *ngIf="registerform.controls['confirm_password'].touched && registerform.controls['confirm_password'].invalid" class="alert alert-danger">
+                        <div *ngIf="registerform.controls['confirm_password'].errors?.['required']">It is a required field</div>
+                        <div *ngIf="registerform.controls['confirm_password'].errors?.['confirmedValidator']">Mismatched</div>
+                    </div>
+                </div>
+                <button type="submit" (click)="registerUser()" [disabled]="!registerform.valid" class="btn btn-primary">Register</button>
+      
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
